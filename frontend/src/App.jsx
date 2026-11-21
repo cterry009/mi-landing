@@ -12,6 +12,11 @@ const plans = [
   { name: 'Equipo', price: '$49', desc: 'Colaboración y soporte' },
 ]
 
+// URL del backend: vacía en desarrollo (Vite la redirige a :3001 con su proxy).
+// En GitHub Pages no hay backend, así que el build de Pages activa el modo demo.
+const API_URL = import.meta.env.VITE_API_URL ?? ''
+const DEMO = import.meta.env.VITE_DEMO === 'true'
+
 function App() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle')
@@ -20,7 +25,15 @@ function App() {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('/api/contact', {
+      if (DEMO) {
+        // Versión publicada sin backend: valida igual que la API y simula el envío.
+        if (!email.includes('@')) throw new Error('email inválido')
+        await new Promise((r) => setTimeout(r, 400))
+        setStatus('sent')
+        setEmail('')
+        return
+      }
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

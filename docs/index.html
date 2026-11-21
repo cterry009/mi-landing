@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>mi-landing — presentación del proyecto</title><style>
+:root{--bg:#f6f5f1;--ink:#1b1f2a;--muted:#555b66;--line:#d9d6cc;--card:#fff;--acc:#0f6b5c;--acc2:#c2410c;--fe:#2d56c8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc)}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 20px 64px}
+header h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:8px 0 10px}
+.tag{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)}
+.lead{font-size:19px;color:var(--muted);max-width:760px;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px;font-size:14px}
+section{margin-top:44px}
+h2{font-size:24px;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.diagram{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.lanes{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:18px;align-items:start}
+.lane h4{margin:0 0 10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.node{display:block;width:100%;text-align:left;border:1.5px solid var(--ink);background:var(--bg);border-radius:10px;padding:10px 12px;margin:0 0 10px;font:inherit;cursor:pointer}
+.node strong{display:block;font-size:15px}
+.node span{display:block;font-size:13px;color:var(--muted)}
+.node:hover,.node:focus-visible{border-color:var(--acc);outline:2px solid var(--acc);outline-offset:1px}
+.node[aria-pressed="true"]{background:#e3f1ec;border-color:var(--acc)}
+.node.fe{border-left:6px solid var(--fe)}.node.be{border-left:6px solid var(--acc)}.node.ext{border-left:6px solid var(--acc2)}
+.flow{font-size:14px;color:var(--muted);margin:6px 0 14px}
+.detail{margin-top:8px;border-top:1px solid var(--line);padding-top:16px;min-height:120px}
+.detail h3{margin:0 0 6px}.detail ul{margin:8px 0 0;padding-left:20px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);margin-top:4px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.io{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+pre{margin:8px 0 0;background:#1b1f2a;color:#e8e6df;border-radius:10px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#efede6;font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+.tablebox{overflow-x:auto;border-radius:12px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.figs figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.figs img{width:100%;height:auto;display:block;border-radius:8px}
+.figs figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+@media (max-width:760px){.lanes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="tag">Proyecto web full-stack</span>
+<h1>mi-landing</h1>
+<p class="lead">Landing page de producto con formulario de captura de contactos: frontend en React + Tailwind y API en Express, publicada en GitHub Pages.</p>
+<ul class="chips"><li>React</li><li>Vite</li><li>Tailwind CSS</li><li>Express</li><li>Node.js</li><li>GitHub Actions</li><li>GitHub Pages</li></ul>
+</header>
+<section>
+<h2>Qué hace</h2>
+<div class="grid3">
+<div class="card"><h3>Página que convierte</h3><p>Hero, beneficios, planes y un formulario de email en una sola vista.</p></div>
+<div class="card"><h3>API mínima y probada</h3><p>Express con /api/health y /api/contact, que valida el email; 4 pruebas con node --test.</p></div>
+<div class="card"><h3>Publicada sola</h3><p>Cada push construye el frontend y lo publica en GitHub Pages en modo demo.</p></div>
+</div>
+</section>
+<section>
+<h2>Cómo está construido</h2>
+<p class="sub">Haz clic en un bloque para ver qué hace, qué recibe y qué entrega.</p>
+<div class="diagram">
+<div class="lanes">
+<div class="lane">
+<h4>Usuario</h4>
+<button class="node ext" data-id="form"><strong>Visitante</strong><span>escribe su email</span></button>
+</div>
+<div class="lane">
+<h4>Frontend y backend</h4>
+<button class="node fe" data-id="app"><strong>App.jsx</strong><span>página y formulario</span></button>
+<button class="node fe" data-id="vite"><strong>vite.config.js</strong><span>build y proxy</span></button>
+<button class="node be" data-id="api"><strong>app.js</strong><span>API en Express</span></button>
+</div>
+<div class="lane">
+<h4>Salidas</h4>
+<button class="node fe" data-id="pages"><strong>GitHub Pages</strong><span>sitio publicado</span></button>
+<button class="node be" data-id="lead"><strong>Registro del contacto</strong><span>consola del servidor</span></button>
+</div>
+</div>
+<p class="flow">Flujo: visitante → App.jsx → POST /api/contact (app.js) → registro del contacto; en Pages el envío es simulado</p>
+<div class="legend"><span><i style="background:var(--fe)"></i>Interfaz</span><span><i style="background:var(--acc)"></i>Código del proyecto</span><span><i style="background:var(--acc2)"></i>Datos o servicio externo</span></div>
+<div class="detail" id="detail" aria-live="polite">
+<h3>Elige un bloque</h3>
+<p class="sub">El detalle aparece aquí, con enlace al código fuente.</p>
+</div>
+</div>
+</section>
+<section>
+<h2>Entra y sale</h2>
+<div class="io">
+<div class="card">
+<h3>Entrada: petición a la API</h3>
+<p>Lo que envía el formulario:</p>
+<pre>POST /api/contact
+Content-Type: application/json
+
+{&quot;email&quot;: &quot;persona@ejemplo.com&quot;}</pre>
+</div>
+<div class="card">
+<h3>Salida: respuesta</h3>
+<p>Email válido o inválido:</p>
+<pre>201 {&quot;received&quot;: true}
+400 {&quot;error&quot;: &quot;Email inválido&quot;}</pre>
+</div>
+</div>
+</section>
+<section>
+<h2>Correrlo</h2>
+<pre>cd backend &amp;&amp; npm install &amp;&amp; npm run dev     # API en :3001
+cd frontend &amp;&amp; npm install &amp;&amp; npm run dev    # http://localhost:5173</pre>
+<p class="sub" style="margin-top:12px">Diseño interno en <a href="https://github.com/cterry009/mi-landing/blob/HEAD/docs/ARQUITECTURA.md">ARQUITECTURA.md</a> · <a href="https://github.com/cterry009/mi-landing">repositorio</a></p>
+</section>
+<footer>Cristian Peña · Licencia MIT</footer>
+</div>
+<script>
+var SRC = "https://github.com/cterry009/mi-landing/blob/HEAD/";
+var NODES = {"form": {"t": "Visitante", "f": "", "d": "La persona que llega a la página y deja su correo para que la contacten.", "i": "—", "o": "Email en el formulario"}, "app": {"t": "App.jsx", "f": "frontend/src/App.jsx", "d": "Componente único con el hero, los beneficios, los planes y el formulario. Envía el email a la API; en modo demo (Pages) valida y simula el envío.", "i": "Email del visitante", "o": "POST /api/contact o envío simulado"}, "vite": {"t": "vite.config.js", "f": "frontend/vite.config.js", "d": "Compila con React y Tailwind. En desarrollo redirige /api al backend en :3001; para Pages usa la ruta base /mi-landing/.", "i": "Código del frontend", "o": "Sitio estático en dist/"}, "api": {"t": "app.js", "f": "backend/src/app.js", "d": "GET /api/health responde ok; POST /api/contact valida que el email tenga @ y registra el contacto. index.js la arranca en el puerto 3001.", "i": "JSON con email", "o": "201 si es válido, 400 si no"}, "pages": {"t": "GitHub Pages", "f": ".github/workflows/pages.yml", "d": "El workflow construye el frontend en modo demo y lo publica en cterry009.github.io/mi-landing.", "i": "Push a master", "o": "Sitio en línea"}, "lead": {"t": "Registro del contacto", "f": "backend/src/app.js", "d": "Por ahora el contacto se registra en la consola del backend. El siguiente paso natural es guardarlo en una base de datos o enviarlo por correo.", "i": "Email válido", "o": "Línea \"Nuevo lead\" en el log"}};
+var buttons = document.querySelectorAll('.node');
+var detail = document.getElementById('detail');
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+buttons.forEach(function(b){
+  b.setAttribute('aria-pressed','false');
+  b.addEventListener('click', function(){
+    var n = NODES[b.dataset.id];
+    buttons.forEach(function(x){x.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true');
+    var link = n.f ? '<p><a href="'+SRC+n.f+'" target="_blank" rel="noopener">Ver el código: '+esc(n.f)+'</a></p>' : '';
+    detail.innerHTML = '<h3>'+esc(n.t)+'</h3><p>'+esc(n.d)+'</p><ul><li><strong>Recibe:</strong> '+esc(n.i)+'</li><li><strong>Entrega:</strong> '+esc(n.o)+'</li></ul>'+link;
+  });
+});
+</script>
+</body>
+</html>
